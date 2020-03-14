@@ -27,9 +27,7 @@ We used S3 to store and retrieve any amount of data, at any time, from anywhere 
 We created databases in DynamoDB which stored ​user’s​ details(profile, login info,
 address and time of delivery, payment info, meal preferences, etc.).
 ● API Gateway (RESTFul APIs)
-An API gateway is programming that sits in front of an application programming interface (A​ PI​) and acts as a single point of entry for a defined group of
-
-microservices. We created a number of resources(calendar, profile, preferences, etc.) which had G​ ET​ and P​ OST​ methods to request or send data with ‘Access-Token’ headers.
+An API gateway is programming that sits in front of an application programming interface (A​ PI​) and acts as a single point of entry for a defined group of microservices. We created a number of resources(calendar, profile, preferences, etc.) which had G​ ET​ and P​ OST​ methods to request or send data with ‘Access-Token’ headers.
 ● Lambda (serve Requests)
 AWS Lambda is a serverless compute service that runs your code in response to events and automatically manages the underlying compute resources for you. We created a number of lambda functions which were triggered on GET or POST methods.
 ● SES and SNS (Notification)

@@ -1,0 +1,543 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Meal Planner API"
+host: "r5hsha0be5.execute-api.us-east-1.amazonaws.com"
+basePath: "/prod"
+schemes:
+- "https"
+paths:
+  /address:
+    get:
+      operationId: "getAddress"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "user_id"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "username"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/address"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+    post:
+      operationId: "postAddress"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "MODEL5bc2a5"
+        required: true
+        schema:
+          $ref: "#/definitions/MODEL5bc2a5"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/address"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            access-control-allow-origin:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /calendar:
+    get:
+      operationId: "getCalendar"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "user_id"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "username"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/calendar"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        500:
+          description: "500 response"
+        403:
+          description: "403 response"
+    post:
+      operationId: "EditCalendar"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "calendar"
+        required: true
+        schema:
+          $ref: "#/definitions/calendar"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/calendar"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        500:
+          description: "500 response"
+        403:
+          description: "403 response"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /driver:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "user_name"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/User"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+    post:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/meals"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /payment:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "user_id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/calendar"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+    post:
+      operationId: "postPayment"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "payment"
+        required: true
+        schema:
+          $ref: "#/definitions/payment"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/payment"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /preferences:
+    get:
+      operationId: "getPreferences"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "user_id"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "username"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/preferences"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        500:
+          description: "500 response"
+        403:
+          description: "403 response"
+    post:
+      operationId: "postPreferences"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "preferences"
+        required: true
+        schema:
+          $ref: "#/definitions/preferences"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "user_name"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /profile:
+    get:
+      operationId: "getProfile"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "user_id"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "username"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/User"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        500:
+          description: "500 response"
+        403:
+          description: "403 response"
+    post:
+      operationId: "changeProfile"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "User"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/User"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        500:
+          description: "500 response"
+        403:
+          description: "403 response"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            access-control-allow-origin:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /signin:
+    get:
+      operationId: "loginUser"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            X-Rate-Limit:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
+            X-Expires-After:
+              type: "string"
+        403:
+          description: "403 response"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /signout:
+    get:
+      operationId: "logoutUser"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+  /signup:
+    post:
+      operationId: "createUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "User"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/User"
+definitions:
+  calendar:
+    type: "object"
+    properties:
+      preferences:
+        $ref: "#/definitions/preferences"
+      time:
+        type: "string"
+  date:
+    type: "object"
+    properties:
+      starting-date:
+        type: "string"
+      ending-date:
+        type: "string"
+  mealchoice:
+    type: "object"
+    properties:
+      meal:
+        type: "array"
+        items:
+          type: "string"
+  preferences:
+    type: "object"
+    properties:
+      preferences_list:
+        type: "array"
+        items:
+          $ref: "#/definitions/weekdays"
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      plan:
+        type: "string"
+  address:
+    type: "object"
+    properties:
+      breakfast:
+        $ref: "#/definitions/lines"
+      lunch:
+        $ref: "#/definitions/lines"
+      snack:
+        $ref: "#/definitions/lines"
+      dinner:
+        $ref: "#/definitions/lines"
+  MODEL5bc2a5:
+    type: "string"
+  weekdays:
+    type: "object"
+    properties:
+      Monday:
+        $ref: "#/definitions/meals"
+      Tuesday:
+        $ref: "#/definitions/meals"
+      Wednesday:
+        $ref: "#/definitions/meals"
+      Thursday:
+        $ref: "#/definitions/meals"
+      Friday:
+        $ref: "#/definitions/meals"
+      Saturday:
+        $ref: "#/definitions/meals"
+      Sunday:
+        $ref: "#/definitions/meals"
+  payment:
+    type: "object"
+    properties:
+      date-range:
+        $ref: "#/definitions/date"
+      name-on-card:
+        type: "string"
+      card-number:
+        type: "string"
+      expiry-date:
+        type: "string"
+      cvv:
+        type: "string"
+      country:
+        type: "string"
+      zip:
+        type: "string"
+  lines:
+    type: "object"
+    properties:
+      line1:
+        type: "string"
+      line2:
+        type: "string"
+      city:
+        type: "string"
+      state:
+        type: "string"
+      zip:
+        type: "string"
+      country:
+        type: "string"
+  meals:
+    type: "object"
+    properties:
+      breakfast:
+        $ref: "#/definitions/mealchoice"
+      lunch:
+        $ref: "#/definitions/mealchoice"
+      snack:
+        $ref: "#/definitions/mealchoice"
+      dinner:
+        $ref: "#/definitions/mealchoice"

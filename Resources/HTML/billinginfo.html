@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MyMacroChef is a premium food delivery service 
+    with the mission to bring affordable and healthy meals to as many people 
+    as possible.">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="../../Vendors/CSS/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../Vendors/CSS/Grid.css">
+    <link rel="stylesheet" type="text/css" href="../../Vendors/CSS/ionicons.css">
+    <link rel="stylesheet" type="text/css" href="../../Vendors/CSS/animate.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/queries.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../../lib/axios/dist/axios.standalone.js"></script>
+	<script type="text/javascript" src="../../lib/CryptoJS/rollups/hmac-sha256.js"></script>
+	<script type="text/javascript" src="../../lib/CryptoJS/rollups/sha256.js"></script>
+	<script type="text/javascript" src="../../lib/CryptoJS/components/hmac.js"></script>
+	<script type="text/javascript" src="../../lib/CryptoJS/components/enc-base64.js"></script>
+	<script type="text/javascript" src="../../lib/url-template/url-template.js"></script>
+	<script type="text/javascript" src="../../lib/apiGatewayCore/sigV4Client.js"></script>
+	<script type="text/javascript" src="../../lib/apiGatewayCore/apiGatewayClient.js"></script>
+	<script type="text/javascript" src="../../lib/apiGatewayCore/simpleHttpClient.js"></script>
+	<script type="text/javascript" src="../../lib/apiGatewayCore/utils.js"></script>
+	<script type="text/javascript" src="../../apigClient.js"></script>
+	<script src="../JS/billinginfo.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400">
+    <title>MyMacroChef</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="..\Favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="..\Favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="..\Favicons/favicon-16x16.png">
+    <link rel="manifest" href="..\Favicons/site.webmanifest">
+    <link rel="mask-icon" href="..\Favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="..\Favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="..\Favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <header class="headerother" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../CSS/IMG/hero.jpg)">
+        <nav>
+            <div class="row">
+                <img src="../IMG/logo-white.png" alt="Logo" class="logo" srcset="" onclick="window.open('livetracking.html', '_self');">
+                <img src="../IMG/logo.png" alt="Logo" class="logo-black" srcset="" onclick="window.open('livetracking.html', '_self');">
+                <ul id="redirect-bar" class="main-nav js--main-nav">
+                    <li><a href="profile.html">My Profile</a></li>
+					<li><a href="preferences.html">My Preferences</a></li>
+					<li><a href="calendar.html">My Calendar</a></li>
+                    <li><a href="addressbook.html">My Address Book</a></li>
+					<li><a href="billinginfo.html">My Billing Info</a></li>
+					<li><a href="livetracking.html">Live Tracking</a></li>
+                    <li><a href="signout.html">Signout</a></li>
+                </ul>
+                <a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="section-form">
+        <div class="row">
+            <h2>My Billing Info</h2>
+        </div>
+		<div id="loading">
+		  <img id="loading-image" src="../IMG/loader.gif" alt="Loading..." />
+		</div>
+        <div class="row">
+            <form mthod="post" class="contact-form" onSubmit="return update();">
+                <div class="row">
+                    <div class="col span-1-of-3">
+                        <select class="selectpicker" id="planselect" required>
+							  <option value="monthly_plan" selected>Billed monthly</option>
+							  <option value="weekly_plan">Billed weekly</option>
+							  <option value="daily_plan">Billed daily</option>
+						</select>
+						<p class="help-block" id="plan-msg"></p>
+                    </div>
+					<div class="col span-2-of-3">
+                        <p id="plan-price"></p>
+                    </div>
+				</div>
+				<div class="row">
+					<div class="col span-1-of-3">
+						<br>
+                        <label for="date">Date Range</label>
+                    </div>
+                    <div class="col span-2-of-3">
+						<div class="col-xs-4 col-sm-4">
+							<span style="font-size:70%">Starting Date</span>
+							<input name="startdate" id="startdate" width="270" type="text" class="form-control" autocomplete="off" disabled/>
+						</div>
+						<div class="col-xs-4 col-sm-4">
+							<span style="font-size:70%">Ending Date</span>
+							<input name="enddate" id="enddate" width="270" type="text" class="form-control" autocomplete="off" disabled/>
+						</div>
+                    </div>
+				</div><br>
+				<div class="row">
+					<div class="col span-1-of-3">
+                        <label for="name-card">Name on Card</label>
+                    </div>
+                    <div class="col span-2-of-3">
+						<div class="col-xs-8 col-sm-8">
+								<div class="form-group">
+									  <input type="text" class="form-control card-input" name="name-card" id="name-card" placeholder="Name on Card">
+								</div>
+						</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="card-num">Card Number</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <div class="row">
+						   <div class="col-xs-3 col-sm-3">
+								<div class="form-group">
+									  <input type="text" id="creditCardEntry1" name="creditCardEntry1" class="form-control card-input" autocomplete="off" maxlength="4" placeholder="xxxx">
+								</div>  
+						   </div>
+						   <div class="col-xs-3 col-sm-3">
+								<div class="form-group">
+									 <input type="text" id="creditCardEntry2" class="form-control card-input" autocomplete="off" maxlength="4" name="creditCardEntry2" placeholder="xxxx">
+								</div>  
+						   </div>
+						   <div class="col-xs-3 col-sm-3">
+								<div class="form-group">
+									 <input type="text" id="creditCardEntry3" class="form-control card-input" autocomplete="off" maxlength="4" name="creditCardEntry3" placeholder="xxxx">
+								</div>  
+							</div>
+						  <div class="col-xs-3 col-sm-3">
+								<div class="form-group">
+									 <input type="text" id="creditCardEntry4" class="form-control card-input" autocomplete="off" maxlength="4" name="creditCardEntry4" placeholder="xxxx">
+								</div>  
+						  </div>
+						</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="expiry-date">Expiry Date</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <div class="row">
+						   <div class="col-xs-3 col-sm-3">
+								<div class="form-group">
+									  <input type="text" id="exp_mon" class="form-control card-input" autocomplete="off" maxlength="2" name="month" placeholder="MM">
+								</div>  
+						   </div>
+						   <div class="col-xs-3 col-sm-3">
+								<div class="form-group">
+									 <input type="text" id="exp_year" class="form-control card-input" autocomplete="off" maxlength="4" name="year" placeholder="YYYY">
+								</div>  
+						   </div>
+						</div>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="cvv">CVC / CVV</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <div class="col-xs-4 col-sm-4">
+							<div class="form-group">
+								  <input type="text" id="cvv" class="form-control card-input" autocomplete="off" maxlength="4" name="cvv" placeholder="3 or 4 digit no.">
+							</div>  
+						</div>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="country">Country</label>
+                    </div>
+                    <div class="col span-2-of-3">
+						<div class="col-xs-4 col-sm-4">
+                        <div class="controls">
+							<select id="country" name="country" class="selectpicker" data-live-search="true" required>
+								<option value="">Please select a country</option>
+								<option data-tokens="Afghanistan" value="AF">Afghanistan</option>
+								<option data-tokens="Albania" value="AL">Albania</option>
+								<option data-tokens="Algeria" value="DZ">Algeria</option>
+								<option data-tokens="American Samoa" value="AS">American Samoa</option>
+								<option data-tokens="Andorra" value="AD">Andorra</option>
+								<option data-tokens="Angola" value="AO">Angola</option>
+								<option data-tokens="Anguilla" value="AI">Anguilla</option>
+								<option data-tokens="Antarctica" value="AQ">Antarctica</option>
+								<option data-tokens="Antigua and Barbuda" value="AG">Antigua and Barbuda</option>
+								<option data-tokens="Argentina" value="AR">Argentina</option>
+								<option data-tokens="Armenia" value="AM">Armenia</option>
+								<option data-tokens="Aruba" value="AW">Aruba</option>
+								<option data-tokens="Australia" value="AU">Australia</option>
+								<option data-tokens="Austria" value="AT">Austria</option>
+								<option data-tokens="Azerbaijan" value="AZ">Azerbaijan</option>
+								<option data-tokens="Bahamas" value="BS">Bahamas</option>
+								<option data-tokens="Bahrain" value="BH">Bahrain</option>
+								<option data-tokens="Bangladesh" value="BD">Bangladesh</option>
+								<option data-tokens="Barbados" value="BB">Barbados</option>
+								<option data-tokens="Belarus" value="BY">Belarus</option>
+								<option data-tokens="Belgium" value="BE">Belgium</option>
+								<option data-tokens="Belize" value="BZ">Belize</option>
+								<option data-tokens="Benin" value="BJ">Benin</option>
+								<option data-tokens="Bermuda" value="BM">Bermuda</option>
+								<option data-tokens="Bhutan" value="BT">Bhutan</option>
+								<option data-tokens="Bolivia" value="BO">Bolivia</option>
+								<option data-tokens="Bosnia and Herzegowina" value="BA">Bosnia and Herzegowina</option>
+								<option data-tokens="Botswana" value="BW">Botswana</option>
+								<option data-tokens="Bouvet Island" value="BV">Bouvet Island</option>
+								<option data-tokens="Brazil" value="BR">Brazil</option>
+								<option data-tokens="British Indian Ocean Territory" value="IO">British Indian Ocean Territory</option>
+								<option data-tokens="Brunei Darussalam" value="BN">Brunei Darussalam</option>
+								<option data-tokens="Bulgaria" value="BG">Bulgaria</option>
+								<option data-tokens="Burkina Faso" value="BF">Burkina Faso</option>
+								<option data-tokens="Burundi" value="BI">Burundi</option>
+								<option data-tokens="Cambodia" value="KH">Cambodia</option>
+								<option data-tokens="Cameroon" value="CM">Cameroon</option>
+								<option data-tokens="Canada" value="CA">Canada</option>
+								<option data-tokens="Cape Verde" value="CV">Cape Verde</option>
+								<option data-tokens="Cayman Islands" value="KY">Cayman Islands</option>
+								<option data-tokens="Central African Republic" value="CF">Central African Republic</option>
+								<option data-tokens="Chad" value="TD">Chad</option>
+								<option data-tokens="Chile" value="CL">Chile</option>
+								<option data-tokens="China" value="CN">China</option>
+								<option data-tokens="Christmas Island" value="CX">Christmas Island</option>
+								<option data-tokens="Cocos (Keeling) Islands" value="CC">Cocos (Keeling) Islands</option>
+								<option data-tokens="Colombia" value="CO">Colombia</option>
+								<option data-tokens="Comoros" value="KM">Comoros</option>
+								<option data-tokens="Congo" value="CG">Congo</option>
+								<option data-tokens="Congo, the Democratic Republic of the" value="CD">Congo, the Democratic Republic of the</option>
+								<option data-tokens="Cook Islands" value="CK">Cook Islands</option>
+								<option data-tokens="Costa Rica" value="CR">Costa Rica</option>
+								<option data-tokens="Cote d'Ivoire" value="CI">Cote d'Ivoire</option>
+								<option data-tokens="Croatia (Hrvatska)" value="HR">Croatia (Hrvatska)</option>
+								<option data-tokens="Cuba" value="CU">Cuba</option>
+								<option data-tokens="Cyprus" value="CY">Cyprus</option>
+								<option data-tokens="Czech Republic" value="CZ">Czech Republic</option>
+								<option data-tokens="Denmark" value="DK">Denmark</option>
+								<option data-tokens="Djibouti" value="DJ">Djibouti</option>
+								<option data-tokens="Dominica" value="DM">Dominica</option>
+								<option data-tokens="Dominican Republic" value="DO">Dominican Republic</option>
+								<option data-tokens="East Timor" value="TP">East Timor</option>
+								<option data-tokens="Ecuador" value="EC">Ecuador</option>
+								<option data-tokens="Egypt" value="EG">Egypt</option>
+								<option data-tokens="El Salvador" value="SV">El Salvador</option>
+								<option data-tokens="Equatorial Guinea" value="GQ">Equatorial Guinea</option>
+								<option data-tokens="Eritrea" value="ER">Eritrea</option>
+								<option data-tokens="Estonia" value="EE">Estonia</option>
+								<option data-tokens="Ethiopia" value="ET">Ethiopia</option>
+								<option data-tokens="Falkland Islands (Malvinas)" value="FK">Falkland Islands (Malvinas)</option>
+								<option data-tokens="Faroe Islands" value="FO">Faroe Islands</option>
+								<option data-tokens="Fiji" value="FJ">Fiji</option>
+								<option data-tokens="Finland" value="FI">Finland</option>
+								<option data-tokens="France" value="FR">France</option>
+								<option data-tokens="France, Metropolitan" value="FX">France, Metropolitan</option>
+								<option data-tokens="French Guiana" value="GF">French Guiana</option>
+								<option data-tokens="French Polynesia" value="PF">French Polynesia</option>
+								<option data-tokens="French Southern Territories" value="TF">French Southern Territories</option>
+								<option data-tokens="Gabon" value="GA">Gabon</option>
+								<option data-tokens="Gambia" value="GM">Gambia</option>
+								<option data-tokens="Georgia" value="GE">Georgia</option>
+								<option data-tokens="Germany" value="DE">Germany</option>
+								<option data-tokens="Ghana" value="GH">Ghana</option>
+								<option data-tokens="Gibraltar" value="GI">Gibraltar</option>
+								<option data-tokens="Greece" value="GR">Greece</option>
+								<option data-tokens="Greenland" value="GL">Greenland</option>
+								<option data-tokens="Grenada" value="GD">Grenada</option>
+								<option data-tokens="Guadeloupe" value="GP">Guadeloupe</option>
+								<option data-tokens="Guam" value="GU">Guam</option>
+								<option data-tokens="Guatemala" value="GT">Guatemala</option>
+								<option data-tokens="Guinea" value="GN">Guinea</option>
+								<option data-tokens="Guinea-Bissau" value="GW">Guinea-Bissau</option>
+								<option data-tokens="Guyana" value="GY">Guyana</option>
+								<option data-tokens="Haiti" value="HT">Haiti</option>
+								<option data-tokens="Heard and Mc Donald Islands" value="HM">Heard and Mc Donald Islands</option>
+								<option data-tokens="Holy See (Vatican City State)" value="VA">Holy See (Vatican City State)</option>
+								<option data-tokens="Honduras" value="HN">Honduras</option>
+								<option data-tokens="Hong Kong" value="HK">Hong Kong</option>
+								<option data-tokens="Hungary" value="HU">Hungary</option>
+								<option data-tokens="Iceland" value="IS">Iceland</option>
+								<option data-tokens="India" value="IN">India</option>
+								<option data-tokens="Indonesia" value="ID">Indonesia</option>
+								<option data-tokens="Iran (Islamic Republic of)" value="IR">Iran (Islamic Republic of)</option>
+								<option data-tokens="Iraq" value="IQ">Iraq</option>
+								<option data-tokens="Ireland" value="IE">Ireland</option>
+								<option data-tokens="Israel" value="IL">Israel</option>
+								<option data-tokens="Italy" value="IT">Italy</option>
+								<option data-tokens="Jamaica" value="JM">Jamaica</option>
+								<option data-tokens="Japan" value="JP">Japan</option>
+								<option data-tokens="Jordan" value="JO">Jordan</option>
+								<option data-tokens="Kazakhstan" value="KZ">Kazakhstan</option>
+								<option data-tokens="Kenya" value="KE">Kenya</option>
+								<option data-tokens="Kiribati" value="KI">Kiribati</option>
+								<option data-tokens="Korea, Democratic People's Republic of" value="KP">Korea, Democratic People's Republic of</option>
+								<option data-tokens="Korea, Republic of" value="KR">Korea, Republic of</option>
+								<option data-tokens="Kuwait" value="KW">Kuwait</option>
+								<option data-tokens="Kyrgyzstan" value="KG">Kyrgyzstan</option>
+								<option data-tokens="Lao People's Democratic Republic" value="LA">Lao People's Democratic Republic</option>
+								<option data-tokens="Latvia" value="LV">Latvia</option>
+								<option data-tokens="Lebanon" value="LB">Lebanon</option>
+								<option data-tokens="Lesotho" value="LS">Lesotho</option>
+								<option data-tokens="Liberia" value="LR">Liberia</option>
+								<option data-tokens="Libyan Arab Jamahiriya" value="LY">Libyan Arab Jamahiriya</option>
+								<option data-tokens="Liechtenstein" value="LI">Liechtenstein</option>
+								<option data-tokens="Lithuania" value="LT">Lithuania</option>
+								<option data-tokens="Luxembourg" value="LU">Luxembourg</option>
+								<option data-tokens="Macau" value="MO">Macau</option>
+								<option data-tokens="Macedonia, The Former Yugoslav Republic of" value="MK">Macedonia, The Former Yugoslav Republic of</option>
+								<option data-tokens="Madagascar" value="MG">Madagascar</option>
+								<option data-tokens="Malawi" value="MW">Malawi</option>
+								<option data-tokens="Malaysia" value="MY">Malaysia</option>
+								<option data-tokens="Maldives" value="MV">Maldives</option>
+								<option data-tokens="Mali" value="ML">Mali</option>
+								<option data-tokens="Malta" value="MT">Malta</option>
+								<option data-tokens="Marshall Islands" value="MH">Marshall Islands</option>
+								<option data-tokens="Martinique" value="MQ">Martinique</option>
+								<option data-tokens="Mauritania" value="MR">Mauritania</option>
+								<option data-tokens="Mauritius" value="MU">Mauritius</option>
+								<option data-tokens="Mayotte" value="YT">Mayotte</option>
+								<option data-tokens="Mexico" value="MX">Mexico</option>
+								<option data-tokens="Micronesia, Federated States of" value="FM">Micronesia, Federated States of</option>
+								<option data-tokens="Moldova, Republic of" value="MD">Moldova, Republic of</option>
+								<option data-tokens="Monaco" value="MC">Monaco</option>
+								<option data-tokens="Mongolia" value="MN">Mongolia</option>
+								<option data-tokens="Montserrat" value="MS">Montserrat</option>
+								<option data-tokens="Morocco" value="MA">Morocco</option>
+								<option data-tokens="Mozambique" value="MZ">Mozambique</option>
+								<option data-tokens="Myanmar" value="MM">Myanmar</option>
+								<option data-tokens="Namibia" value="NA">Namibia</option>
+								<option data-tokens="Nauru" value="NR">Nauru</option>
+								<option data-tokens="Nepal" value="NP">Nepal</option>
+								<option data-tokens="Netherlands" value="NL">Netherlands</option>
+								<option data-tokens="Netherlands Antilles" value="AN">Netherlands Antilles</option>
+								<option data-tokens="New Caledonia" value="NC">New Caledonia</option>
+								<option data-tokens="New Zealand" value="NZ">New Zealand</option>
+								<option data-tokens="Nicaragua" value="NI">Nicaragua</option>
+								<option data-tokens="Niger" value="NE">Niger</option>
+								<option data-tokens="Nigeria" value="NG">Nigeria</option>
+								<option data-tokens="Niue" value="NU">Niue</option>
+								<option data-tokens="Norfolk Island" value="NF">Norfolk Island</option>
+								<option data-tokens="Northern Mariana Islands" value="MP">Northern Mariana Islands</option>
+								<option data-tokens="Norway" value="NO">Norway</option>
+								<option data-tokens="Oman" value="OM">Oman</option>
+								<option data-tokens="Pakistan" value="PK">Pakistan</option>
+								<option data-tokens="Palau" value="PW">Palau</option>
+								<option data-tokens="Panama" value="PA">Panama</option>
+								<option data-tokens="Papua New Guinea" value="PG">Papua New Guinea</option>
+								<option data-tokens="Paraguay" value="PY">Paraguay</option>
+								<option data-tokens="Peru" value="PE">Peru</option>
+								<option data-tokens="Philippines" value="PH">Philippines</option>
+								<option data-tokens="Pitcairn" value="PN">Pitcairn</option>
+								<option data-tokens="Poland" value="PL">Poland</option>
+								<option data-tokens="Portugal" value="PT">Portugal</option>
+								<option data-tokens="Puerto Rico" value="PR">Puerto Rico</option>
+								<option data-tokens="Qatar" value="QA">Qatar</option>
+								<option data-tokens="Reunion" value="RE">Reunion</option>
+								<option data-tokens="Romania" value="RO">Romania</option>
+								<option data-tokens="Russian Federation" value="RU">Russian Federation</option>
+								<option data-tokens="Rwanda" value="RW">Rwanda</option>
+								<option data-tokens="Saint Kitts and Nevis" value="KN">Saint Kitts and Nevis</option>
+								<option data-tokens="Saint LUCIA" value="LC">Saint LUCIA</option>
+								<option data-tokens="Saint Vincent and the Grenadines" value="VC">Saint Vincent and the Grenadines</option>
+								<option data-tokens="Samoa" value="WS">Samoa</option>
+								<option data-tokens="San Marino" value="SM">San Marino</option>
+								<option data-tokens="Sao Tome and Principe" value="ST">Sao Tome and Principe</option>
+								<option data-tokens="Saudi Arabia" value="SA">Saudi Arabia</option>
+								<option data-tokens="Senegal" value="SN">Senegal</option>
+								<option data-tokens="Seychelles" value="SC">Seychelles</option>
+								<option data-tokens="Sierra Leone" value="SL">Sierra Leone</option>
+								<option data-tokens="Singapore" value="SG">Singapore</option>
+								<option data-tokens="Slovakia (Slovak Republic)" value="SK">Slovakia (Slovak Republic)</option>
+								<option data-tokens="Slovenia" value="SI">Slovenia</option>
+								<option data-tokens="Solomon Islands" value="SB">Solomon Islands</option>
+								<option data-tokens="Somalia" value="SO">Somalia</option>
+								<option data-tokens="South Africa" value="ZA">South Africa</option>
+								<option data-tokens="South Georgia and the South Sandwich Islands" value="GS">South Georgia and the South Sandwich Islands</option>
+								<option data-tokens="Spain" value="ES">Spain</option>
+								<option data-tokens="Sri Lanka" value="LK">Sri Lanka</option>
+								<option data-tokens="St. Helena" value="SH">St. Helena</option>
+								<option data-tokens="St. Pierre and Miquelon" value="PM">St. Pierre and Miquelon</option>
+								<option data-tokens="Sudan" value="SD">Sudan</option>
+								<option data-tokens="Suriname" value="SR">Suriname</option>
+								<option data-tokens="Svalbard and Jan Mayen Islands" value="SJ">Svalbard and Jan Mayen Islands</option>
+								<option data-tokens="Swaziland" value="SZ">Swaziland</option>
+								<option data-tokens="Sweden" value="SE">Sweden</option>
+								<option data-tokens="Switzerland" value="CH">Switzerland</option>
+								<option data-tokens="Syrian Arab Republic" value="SY">Syrian Arab Republic</option>
+								<option data-tokens="Taiwan, Province of China" value="TW">Taiwan, Province of China</option>
+								<option data-tokens="Tajikistan" value="TJ">Tajikistan</option>
+								<option data-tokens="Tanzania, United Republic of" value="TZ">Tanzania, United Republic of</option>
+								<option data-tokens="Thailand" value="TH">Thailand</option>
+								<option data-tokens="Togo" value="TG">Togo</option>
+								<option data-tokens="Tokelau" value="TK">Tokelau</option>
+								<option data-tokens="Tonga" value="TO">Tonga</option>
+								<option data-tokens="Trinidad and Tobago" value="TT">Trinidad and Tobago</option>
+								<option data-tokens="Tunisia" value="TN">Tunisia</option>
+								<option data-tokens="Turkey" value="TR">Turkey</option>
+								<option data-tokens="Turkmenistan" value="TM">Turkmenistan</option>
+								<option data-tokens="Turks and Caicos Islands" value="TC">Turks and Caicos Islands</option>
+								<option data-tokens="Tuvalu" value="TV">Tuvalu</option>
+								<option data-tokens="Uganda" value="UG">Uganda</option>
+								<option data-tokens="Ukraine" value="UA">Ukraine</option>
+								<option data-tokens="United Arab Emirates" value="AE">United Arab Emirates</option>
+								<option data-tokens="United Kingdom" value="GB">United Kingdom</option>
+								<option data-tokens="United States" value="US">United States</option>
+								<option data-tokens="United States Minor Outlying Islands" value="UM">United States Minor Outlying Islands</option>
+								<option data-tokens="Uruguay" value="UY">Uruguay</option>
+								<option data-tokens="Uzbekistan" value="UZ">Uzbekistan</option>
+								<option data-tokens="Vanuatu" value="VU">Vanuatu</option>
+								<option data-tokens="Venezuela" value="VE">Venezuela</option>
+								<option data-tokens="Viet Nam" value="VN">Viet Nam</option>
+								<option data-tokens="Virgin Islands (British)" value="VG">Virgin Islands (British)</option>
+								<option data-tokens="Virgin Islands (U.S.)" value="VI">Virgin Islands (U.S.)</option>
+								<option data-tokens="Wallis and Futuna Islands" value="WF">Wallis and Futuna Islands</option>
+								<option data-tokens="Western Sahara" value="EH">Western Sahara</option>
+								<option data-tokens="Yemen" value="YE">Yemen</option>
+								<option data-tokens="Yugoslavia" value="YU">Yugoslavia</option>
+								<option data-tokens="Zambia" value="ZM">Zambia</option>
+								<option data-tokens="Zimbabwe" value="ZW">Zimbabwe</option>
+							</select>
+						</div>
+						</div>
+                    </div>
+                </div><br>
+				<div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="zip">Zip Code</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <div class="col-xs-4 col-sm-4">
+							<div class="form-group">
+								  <input type="text" id="zip" class="form-control card-input" autocomplete="off" minlength="5" maxlength="5" name="zip" placeholder="5 digit zip code">
+							</div>  
+						</div>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="total">Total Bill (incl. 10% tax)</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <p id="total-bill"></p>
+                    </div>
+                </div><br>
+				<div class="row">
+					<p align="center" id="submitnote" hidden>User's billing info has been updated</p>
+				</div>
+                <div class="row">
+                    <div class="col span-1-of-3">
+                        <label for="">&nbsp;</label>
+                    </div>
+                    <div class="col span-2-of-3">
+                        <input class="submit-button" type="submit" value="Pay!">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="row">
+            <div class="col span-1-of-2">
+                <ul class="footer-nav">
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">iOS App</a></li>
+                    <li><a href="#">Android App</a></li>
+                </ul>
+            </div>
+            <div class="col span-1-of-2">
+                <ul class="social-links">
+                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                    <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <p>
+                Copyright &copy; 2019 MyMacroChef. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+    <script src="../../Vendors/JS/jquery.waypoints.min.js"></script>
+</body>
+</html>

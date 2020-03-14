@@ -1,0 +1,8 @@
+PhantomJS is launching GhostDriver...
+[INFO  - 2019-11-17T17:38:28.254Z] GhostDriver - Main - running on port 50523
+[INFO  - 2019-11-17T17:38:29.191Z] Session [111d1de0-0961-11ea-a98f-e53baac1e259] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34","webSecurityEnabled":true}
+[INFO  - 2019-11-17T17:38:29.191Z] Session [111d1de0-0961-11ea-a98f-e53baac1e259] - page.customHeaders:  - {}
+[INFO  - 2019-11-17T17:38:29.191Z] Session [111d1de0-0961-11ea-a98f-e53baac1e259] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"1.9.8","driverName":"ghostdriver","driverVersion":"1.1.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2019-11-17T17:38:29.192Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 111d1de0-0961-11ea-a98f-e53baac1e259
+double free or corruption (out)
+PhantomJS has crashed. Please read the crash reporting guide at https://github.com/ariya/phantomjs/wiki/Crash-Reporting and file a bug report at https://github.com/ariya/phantomjs/issues/new with the crash dump file attached: /tmp/750e843b-6a6b-a28f-27bea742-61e16a18.dmp

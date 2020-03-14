@@ -1,0 +1,58 @@
+ERROR:root:Invalid URL 'www.eatthismuch.com/recipe/nutrition/italian-style-veggie-burger-with-polenta,1004757/': No schema supplied. Perhaps you meant http://www.eatthismuch.com/recipe/nutrition/italian-style-veggie-burger-with-polenta,1004757/?
+Traceback (most recent call last):
+  File "<ipython-input-4-57a73ca5bd9c>", line 6, in get_html
+    resp = get(url, stream=True, timeout=30)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/sessions.py", line 519, in request
+    prep = self.prepare_request(req)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/sessions.py", line 462, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/models.py", line 313, in prepare
+    self.prepare_url(url, params)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/models.py", line 387, in prepare_url
+    raise MissingSchema(error)
+requests.exceptions.MissingSchema: Invalid URL 'www.eatthismuch.com/recipe/nutrition/italian-style-veggie-burger-with-polenta,1004757/': No schema supplied. Perhaps you meant http://www.eatthismuch.com/recipe/nutrition/italian-style-veggie-burger-with-polenta,1004757/?
+ERROR:root:Invalid URL 'www.eatthismuch.com/recipe/nutrition/italian-style-veggie-burger-with-polenta,1004757/': No schema supplied. Perhaps you meant http://www.eatthismuch.com/recipe/nutrition/italian-style-veggie-burger-with-polenta,1004757/?
+Traceback (most recent call last):
+  File "<ipython-input-4-57a73ca5bd9c>", line 6, in get_html
+    resp = get(url, stream=True, timeout=30)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/sessions.py", line 519, in request
+    prep = self.prepare_request(req)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/sessions.py", line 462, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/models.py", line 313, in prepare
+    self.prepare_url(url, params)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/models.py", line 387, in prepare_url
+    raise MissingSchema(error)
+requests.exceptions.MissingSchema: Invalid URL 'www.eatthismuch.com/recipe/nutrition/italian-style-veggie-burger-with-polenta,1004757/': No schema supplied. Perhaps you meant http://www.eatthismuch.com/recipe/nutrition/italian-style-veggie-burger-with-polenta,1004757/?
+ERROR:root:Invalid URL 'www.eatthismuch.com/recipe/nutrition/italian-style-veggie-burger-with-polenta,1004757/': No schema supplied. Perhaps you meant http://www.eatthismuch.com/recipe/nutrition/italian-style-veggie-burger-with-polenta,1004757/?
+Traceback (most recent call last):
+  File "<ipython-input-4-57a73ca5bd9c>", line 6, in get_html
+    resp = get(url, stream=True, timeout=30)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/sessions.py", line 519, in request
+    prep = self.prepare_request(req)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/sessions.py", line 462, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/models.py", line 313, in prepare
+    self.prepare_url(url, params)
+  File "/home/hardik/hardik/lib/python3.6/site-packages/requests/models.py", line 387, in prepare_url
+    raise MissingSchema(error)
+requests.exceptions.MissingSchema: Invalid URL 'www.eatthismuch.com/recipe/nutrition/italian-style-veggie-burger-with-polenta,1004757/': No schema supplied. Perhaps you meant http://www.eatthismuch.com/recipe/nutrition/italian-style-veggie-burger-with-polenta,1004757/?
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1de5b90278>: Failed to establish a new connection: [Errno 111] Connection refused',)': /wd/hub/session/111d1de0-0961-11ea-a98f-e53baac1e259/url
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1de5783358>: Failed to establish a new connection: [Errno 111] Connection refused',)': /wd/hub/session/111d1de0-0961-11ea-a98f-e53baac1e259/url
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1de5b94358>: Failed to establish a new connection: [Errno 111] Connection refused',)': /wd/hub/session/111d1de0-0961-11ea-a98f-e53baac1e259/url
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1de210eac8>: Failed to establish a new connection: [Errno 111] Connection refused',)': /session/0a3d7ad3a15957044bb6b579fba38077/url
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1e00e47b00>: Failed to establish a new connection: [Errno 111] Connection refused',)': /session/0a3d7ad3a15957044bb6b579fba38077/url
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f1e00e47278>: Failed to establish a new connection: [Errno 111] Connection refused',)': /session/0a3d7ad3a15957044bb6b579fba38077/url
+INFO:root:test

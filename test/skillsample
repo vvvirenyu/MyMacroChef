@@ -1,0 +1,22 @@
+Skill to manage your My Macro Chef food plan
+
+This skill can be used to manage your My Macro Chef food plan. The user can do the below four operations:
+Change Dish: By saying "Ask, My Macro Chef to change {date} {mealTime} to {changeDish}"
+Change Address: By saying "Ask, My Macro Chef to deliver {date} {mealTime} to {streetAddress} {city} {zip}"
+Change Time: By saying "Ask, My Macro Chef to deliver {date} {mealTime} at {deliveryTime}"
+Cancel Delivery: By saying "Ask, My Macro Chef to cancel {date} {mealTime}"
+{date} can be any date between the subscription start date(on or after today's date) and the subscription end date.
+{mealTime} can be Breakfast, Lunch, Snack or Dinner.
+{deliveryTime} can be between 7 am - 9 am for Breakfast, 12 pm - 2 pm for Lunch, 4 pm - 5:30 pm for Snack and 7 pm - 9 pm for Dinner
+{changeDish} can be any dish based on the {mealTime}. For eg - juices can be selected for Snack and not for any other {mealTime}
+
+Alexa, open my macro chef and invoke change time to deliver today breakfast at 9 am
+Alexa, open my macro chef and invoke change dish to change today lunch to Tuna Noodle Casserole
+Alexa, open my macro chef and change delivery address
+Alexa, open my macro chef and inovke cancel meal to cancel today dinner
+
+Food, Subscription, Delivery
+
+https://mymacrochefs3.s3.amazonaws.com/Resources/HTML/privacy.html
+
+https://mymacrochefs3.s3.amazonaws.com/Resources/HTML/terms.html

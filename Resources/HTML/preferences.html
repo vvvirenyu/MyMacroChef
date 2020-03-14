@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MyMacroChef is a premium food delivery service 
+    with the mission to bring affordable and healthy meals to as many people 
+    as possible.">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="../../Vendors/CSS/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../Vendors/CSS/Grid.css">
+    <link rel="stylesheet" type="text/css" href="../../Vendors/CSS/ionicons.css">
+    <link rel="stylesheet" type="text/css" href="../../Vendors/CSS/animate.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/queries.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../../lib/axios/dist/axios.standalone.js"></script>
+	<script type="text/javascript" src="../../lib/CryptoJS/rollups/hmac-sha256.js"></script>
+	<script type="text/javascript" src="../../lib/CryptoJS/rollups/sha256.js"></script>
+	<script type="text/javascript" src="../../lib/CryptoJS/components/hmac.js"></script>
+	<script type="text/javascript" src="../../lib/CryptoJS/components/enc-base64.js"></script>
+	<script type="text/javascript" src="../../lib/url-template/url-template.js"></script>
+	<script type="text/javascript" src="../../lib/apiGatewayCore/sigV4Client.js"></script>
+	<script type="text/javascript" src="../../lib/apiGatewayCore/apiGatewayClient.js"></script>
+	<script type="text/javascript" src="../../lib/apiGatewayCore/simpleHttpClient.js"></script>
+	<script type="text/javascript" src="../../lib/apiGatewayCore/utils.js"></script>
+	<script type="text/javascript" src="../../apigClient.js"></script>
+	<script src="../JS/preferences.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400">
+    <title>MyMacroChef</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="..\Favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="..\Favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="..\Favicons/favicon-16x16.png">
+    <link rel="mask-icon" href="..\Favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="..\Favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="..\Favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <header class="headerother" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../CSS/IMG/hero.jpg)">
+        <nav>
+            <div class="row">
+                <img src="../IMG/logo-white.png" alt="Logo" class="logo" srcset="" onclick="window.open('livetracking.html', '_self');">
+                <img src="../IMG/logo.png" alt="Logo" class="logo-black" srcset="" onclick="window.open('livetracking.html', '_self');">
+                <ul id="redirect-bar" class="main-nav js--main-nav">
+                    <li><a href="profile.html">My Profile</a></li>
+					<li><a href="preferences.html">My Preferences</a></li>
+					<li><a href="calendar.html">My Calendar</a></li>
+                    <li><a href="addressbook.html">My Address Book</a></li>
+					<li><a href="billinginfo.html">My Billing Info</a></li>
+					<li><a href="livetracking.html">Live Tracking</a></li>
+                    <li><a href="signout.html">Signout</a></li>
+                </ul>
+                <a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
+            </div>
+        </nav>
+    </header>
+
+	<section class="section-form">
+        <div class="row">
+            <h2>My Preferences</h2>
+        </div><br>
+		<div id="loading">
+		  <img id="loading-image" src="../IMG/loader.gif" alt="Loading..." />
+		</div>
+		<form mthod="post" onsubmit="return update();">
+			<table class="table" id="preftable">
+				<thead>
+				  <tr>
+					<td></td>
+					<th scope="col">Breakfast</th>
+					<th scope="col">Lunch</th>
+					<th scope="col">Snack</th>
+					<th scope="col">Dinner</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr>
+					<th scope="row">Monday</th>
+					<td><select id="monbfcui" name="monbfcui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="monlncui" name="monlncui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="monsncui" name="monsncui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="mondncui" name="mondncui" class="selectpicker" data-live-search="true">
+					</select></td>
+				  </tr>
+				  <tr>
+					<th scope="row">Tuesday</th>
+					<td><select id="tuebfcui" name="tuebfcui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="tuelncui" name="tuelncui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="tuesncui" name="tuesncui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="tuedncui" name="tuedncui" class="selectpicker" data-live-search="true">
+					</select></td>
+				  </tr>
+				  <tr>
+					<th scope="row">Wednesday</th>
+					<td><select id="wedbfcui" name="wedbfcui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="wedlncui" name="wedlncui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="wedsncui" name="wedsncui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="weddncui" name="weddncui" class="selectpicker" data-live-search="true">
+					</select></td>
+				  </tr>
+				  <tr>
+					<th scope="row">Thursday</th>
+					<td><select id="thrbfcui" name="thrbfcui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="thrlncui" name="thrlncui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="thrsncui" name="thrsncui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="thrdncui" name="thrdncui" class="selectpicker" data-live-search="true">
+					</select></td>
+				  </tr>
+				  <tr>
+					<th scope="row">Friday</th>
+					<td><select id="fribfcui" name="fribfcui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="frilncui" name="frilncui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="frisncui" name="frisncui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="fridncui" name="fridncui" class="selectpicker" data-live-search="true">
+					</select></td>
+				  </tr>
+				  <tr>
+					<th scope="row">Saturday</th>
+					<td><select id="satbfcui" name="satbfcui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="satlncui" name="satlncui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="satsncui" name="satsncui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="satdncui" name="satdncui" class="selectpicker" data-live-search="true">
+					</select></td>
+				  </tr>
+				  <tr>
+					<th scope="row">Sunday</th>
+					<td><select id="sunbfcui" name="sunbfcui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="sunlncui" name="sunlncui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="sunsncui" name="sunsncui" class="selectpicker" data-live-search="true">
+					</select></td>
+					<td><select id="sundncui" name="sundncui" class="selectpicker" data-live-search="true">
+					</select></td>
+				  </tr>
+				</tbody>
+			</table><br>
+			<div class="row">
+				<p align="center" id="submitnote" hidden>User's preferences has been updated</p>
+			</div>
+			<div class="row">
+				<div class="col span-1-of-3">
+					<label for="">&nbsp;</label>
+				</div>
+				<div class="col span-2-of-3">
+					<input type="submit" value="Update!">
+					<span>&ensp;</span>
+					<input type="button" value="Get New Recommendation" onclick="getRecommendation()">
+				</div>
+			</div>
+		</form>
+	</section>
+	
+    <footer>
+        <div class="row">
+            <div class="col span-1-of-2">
+                <ul class="footer-nav">
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">iOS App</a></li>
+                    <li><a href="#">Android App</a></li>
+                </ul>
+            </div>
+            <div class="col span-1-of-2">
+                <ul class="social-links">
+                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                    <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <p>
+                Copyright &copy; 2019 MyMacroChef. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+    <script src="../../Vendors/JS/jquery.waypoints.min.js"></script>
+</body>
+</html>

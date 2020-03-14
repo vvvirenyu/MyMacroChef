@@ -1,0 +1,128 @@
+{
+	"version": "1.0",
+	"session": {
+		"new": false,
+		"sessionId": "amzn1.echo-api.session.c0c2e5fd-bb00-4a40-a1aa-3b4a6f1a163e",
+		"application": {
+			"applicationId": "amzn1.ask.skill.44e9f02f-6404-45a4-9bc6-983efc6a73f0"
+		},
+		"user": {
+			"userId": "amzn1.ask.account.AEYIBSZJVDLYWZBWWBWQSXYXCC6O2TLKGQOTBK2GXDZCKNKBTXUH7SU5JYU7CE4377VYTRXL2ZNXRUBBBWJM6BXXUWTA6QIWCJRWTADUEH5WKQWGMCVQHCIYOFK7GVRMSRD2XMM4BAESJFZIZLPARQL7RBQABM4EN7ZG5CBM5XK77NXFUVKSVXO7I7SN3BPVOX3CAMIPVVEDBTA"
+		}
+	},
+	"context": {
+		"System": {
+			"application": {
+				"applicationId": "amzn1.ask.skill.44e9f02f-6404-45a4-9bc6-983efc6a73f0"
+			},
+			"user": {
+				"userId": "amzn1.ask.account.AEYIBSZJVDLYWZBWWBWQSXYXCC6O2TLKGQOTBK2GXDZCKNKBTXUH7SU5JYU7CE4377VYTRXL2ZNXRUBBBWJM6BXXUWTA6QIWCJRWTADUEH5WKQWGMCVQHCIYOFK7GVRMSRD2XMM4BAESJFZIZLPARQL7RBQABM4EN7ZG5CBM5XK77NXFUVKSVXO7I7SN3BPVOX3CAMIPVVEDBTA"
+			},
+			"device": {
+				"deviceId": "amzn1.ask.device.AHGYYBCJSAFC3UQGPXAYRJBTNIWVZR7RC56QIYQRJS5LUZHMVBKI54WMKNQN6MMHBVNOI3I3IQ2WHWNDAHQO6PAKXLOGTXZTTPBHOTMIQGJJ4JFKQYK2JNQZURDMTH5WO5HBKIHUFKYUDUC7KE6YJMJGYXOQ7DS6KKT7AEIX45XUM4VQPCW2I",
+				"supportedInterfaces": {}
+			},
+			"apiEndpoint": "https://api.amazonalexa.com",
+			"apiAccessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjEifQ.eyJhdWQiOiJodHRwczovL2FwaS5hbWF6b25hbGV4YS5jb20iLCJpc3MiOiJBbGV4YVNraWxsS2l0Iiwic3ViIjoiYW16bjEuYXNrLnNraWxsLjQ0ZTlmMDJmLTY0MDQtNDVhNC05YmM2LTk4M2VmYzZhNzNmMCIsImV4cCI6MTU3NTEwNjgyMiwiaWF0IjoxNTc1MTA2NTIyLCJuYmYiOjE1NzUxMDY1MjIsInByaXZhdGVDbGFpbXMiOnsiY29udGV4dCI6IkFBQUFBQUFBQUFETVFBaUpEdk83bTJMQUV3V0I2WERoS3dFQUFBQUFBQUFyZHVCVEFDMGk3L3pGMkw0cU13d0NUM0NkMzlOY0xVZGMrTTFJQmJJMXhLYy9SRHRnVCs0Tm5hK21VVk4xYmRjeTMyenpuR00zZXhXanZIaDdYdlBrdWZmc0RJV0JIT2xIOWZxbm4vaXdSMkR1NHlSbnh2Z013NDcxRGNQbjdZbm03dDlPR3Jlb05wd2NlaWlBUE9KZkx6OElLWFhxTndjSHNpSDFJUzVFdVpJM21FdjQvYnBwdmV5MU1jL0g4NkJzcjQySmtVeG9TOEEwZDBvR3RkVFBmZEg5Y0VIRjNQeUM0ZHhSNm9jQ2p0MnJ5UFZvU0hZMXdsaWNPK3hZZzF2cGxqZ09LT2o3elJXZ3RxUitHVURWSUpwd1NYRUdsS0trNDU0dEZFQmpLRXZYMnpUeWxFdzArMXIySy9wNVhNN21wV00vU0htcFptUkVsN1laaWRvRkVNSFdpU1Rtbnl4Wjl6Ukp5NForVG50SHFWbzhzYnV3NFpYZmdjckdjcHlIaHVWeWR0VzZzWWtldXc9PSIsImNvbnNlbnRUb2tlbiI6bnVsbCwiZGV2aWNlSWQiOiJhbXpuMS5hc2suZGV2aWNlLkFIR1lZQkNKU0FGQzNVUUdQWEFZUkpCVE5JV1ZaUjdSQzU2UUlZUVJKUzVMVVpITVZCS0k1NFdNS05RTjZNTUhCVk5PSTNJM0lRMldIV05EQUhRTzZQQUtYTE9HVFhaVFRQQkhPVE1JUUdKSjRKRktRWUsySk5RWlVSRE1USDVXTzVIQktJSFVGS1lVRFVDN0tFNllKTUpHWVhPUTdEUzZLS1Q3QUVJWDQ1WFVNNFZRUENXMkkiLCJ1c2VySWQiOiJhbXpuMS5hc2suYWNjb3VudC5BRVlJQlNaSlZETFlXWkJXV0JXUVNYWVhDQzZPMlRMS0dRT1RCSzJHWERaQ0tOS0JUWFVIN1NVNUpZVTdDRTQzNzdWWVRSWEwyWk5YUlVCQkJXSk02QlhYVVdUQTZRSVdDSlJXVEFEVUVINVdLUVdHTUNWUUhDSVlPRks3R1ZSTVNSRDJYTU00QkFFU0pGWklaTFBBUlFMN1JCUUFCTTRFTjdaRzVDQk01WEs3N05YRlVWS1NWWE83STdTTjNCUFZPWDNDQU1JUFZWRURCVEEifX0.B8EwWS-PvhHVX41cu-pqO9rrAg-JcQu_pPGS5JOl54g668guQP9SAfUMMKwLhQ3zGPDBGFHI4qsYyaJeItquO3SPag0MLfjucXzNmiXolanzy1JI0CwUj0A8nplHtE8O-bhUco0C4_aL04OJ9mhydbS1-Y1PcV0-8_6a4yw6LVEu7mfpv31GJsApLQj7kR10YwIZJfLkReKFEeMrsRu8swP5wUOCRcgtKCqX3UUtPcgtyUD2jztpODe0KsUodcHfq3zDk32GfD6CJC2-fdnH68b4-EfYGmqA4Xxi5NsgzSu90YsFHHTmrzdr-ypHHppxvgbwTjDz0YzRxwBUfD2B6Q"
+		},
+		"Viewport": {
+			"experiences": [
+				{
+					"arcMinuteWidth": 246,
+					"arcMinuteHeight": 144,
+					"canRotate": false,
+					"canResize": false
+				}
+			],
+			"shape": "RECTANGLE",
+			"pixelWidth": 1024,
+			"pixelHeight": 600,
+			"dpi": 160,
+			"currentPixelWidth": 1024,
+			"currentPixelHeight": 600,
+			"touch": [
+				"SINGLE"
+			],
+			"video": {
+				"codecs": [
+					"H_264_42",
+					"H_264_41"
+				]
+			}
+		},
+		"Viewports": [
+			{
+				"type": "APL",
+				"id": "main",
+				"shape": "RECTANGLE",
+				"dpi": 160,
+				"presentationType": "STANDARD",
+				"canRotate": false,
+				"configuration": {
+					"current": {
+						"video": {
+							"codecs": [
+								"H_264_42",
+								"H_264_41"
+							]
+						},
+						"size": {
+							"type": "DISCRETE",
+							"pixelWidth": 1024,
+							"pixelHeight": 600
+						}
+					}
+				}
+			}
+		]
+	},
+	"request": {
+		"type": "IntentRequest",
+		"requestId": "amzn1.echo-api.request.dc9d327f-bb5b-4383-a885-80d9650b72a0",
+		"timestamp": "2019-11-30T09:35:22Z",
+		"locale": "en-US",
+		"intent": {
+			"name": "ChangeDishIntent",
+			"confirmationStatus": "CONFIRMED",
+			"slots": {
+				"date": {
+					"name": "date",
+					"value": "2019-11-30",
+					"confirmationStatus": "NONE",
+					"source": "USER"
+				},
+				"changeDish": {
+					"name": "changeDish",
+					"value": "eggs",
+					"confirmationStatus": "NONE",
+					"source": "USER"
+				},
+				"mealTime": {
+					"name": "mealTime",
+					"value": "breakfast",
+					"resolutions": {
+						"resolutionsPerAuthority": [
+							{
+								"authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.44e9f02f-6404-45a4-9bc6-983efc6a73f0.MealType",
+								"status": {
+									"code": "ER_SUCCESS_MATCH"
+								},
+								"values": [
+									{
+										"value": {
+											"name": "breakfast",
+											"id": "835ef6c0b2999746e9a5bdc11b3e528c"
+										}
+									}
+								]
+							}
+						]
+					},
+					"confirmationStatus": "NONE",
+					"source": "USER"
+				}
+			}
+		},
+		"dialogState": "COMPLETED"
+	}
+}
